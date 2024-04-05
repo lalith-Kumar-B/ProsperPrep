@@ -1,2 +1,2 @@
-#### tech-titans
+#### tech-titan
 
