@@ -1,8 +1,10 @@
 import React from 'react'
-
+import QuizBox from "../components/QuizBox.jsx"
 function Quiz() {
   return (
-    <div>Quiz</div>
+    <div>
+    < QuizBox />    
+    </div>
   )
 }
 
