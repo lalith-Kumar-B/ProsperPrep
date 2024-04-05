@@ -10,7 +10,7 @@ function Navbar() {
   const [contactForm, setContactForm] = useState({click:false,color:'black',bg:'#f3f4f6',formD:'none'});
   function toggleCF(){
     setContactForm((obj) => {
-      return {click :!obj.click, color:'#064E3B', bg:'rgb(223 183 239)', formD: obj.click ? 'none' : 'block'}
+      return {click :!obj.click, color:'#064E3B', bg:'rgb(233 183 239)', formD: obj.click ? 'none' : 'block'}
     })
   }
   //Navigate hook and styles
