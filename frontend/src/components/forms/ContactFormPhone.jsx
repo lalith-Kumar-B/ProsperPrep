@@ -47,7 +47,7 @@ function ContactFormPhone({display}) {
 
 const ContactDetails = React.memo(()=>{
   return (<Box sx={{width: 500,maxWidth: '100%', marginTop:2, paddingLeft:2, paddingRight:2, textAlign:'center'}}>
-              <div className="text-sm font-Roboto tracking-tighter font-bold">Or email at  codwithlalith@gmail.com</div>
+              <div className="text-sm font-Roboto tracking-tighter font-bold">Or email at prosperprep007@gmail.com</div>
             </Box>)
 });
 

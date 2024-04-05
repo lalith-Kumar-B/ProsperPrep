@@ -3,7 +3,7 @@ function Logo() {
     const logoGradients = `bg-gradient-to-r from-yellow-300 to to-pink-100`;
 return (
     <div className={logoStyles} >
-        <img  src="/med.jpeg" alt="logo" className={`w-12 h-12 mx-3 my-2 p-1 ${logoGradients} rounded-full border `}/>
+        <img  src="/stocklogo.png" alt="logo" className={`w-12 h-12 mx-3 my-2 p-1 ${logoGradients} rounded-full border `}/>
     </div>
   )
 }

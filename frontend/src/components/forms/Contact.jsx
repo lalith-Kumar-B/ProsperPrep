@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import  Button  from '@mui/material/Button';
 import { SignedIn , SignedOut } from '@clerk/clerk-react';
 function Contact({display}) {
-  const initData = {name:'', email:'',msg:''};
+  const initData = {NAME:'', EMAIL:'',MESSAGE:''};
   const [formData,setFormData] = useState({...initData});
   const handleInputChange = (e) =>{
     setFormData(prevformData => {return {...prevformData,[e.target.name]:e.target.value}});
@@ -16,7 +16,7 @@ function Contact({display}) {
       setFormData(initData);
     }
   }
-  const gradientStyles = `bg-gradient-to-r from-cyan-200 to-pink-300`;
+  const gradientStyles = `bg-gradient-to-r from-green-100 to-green-300`;
   return (
     <>
     <SignedIn>
@@ -49,7 +49,7 @@ function Contact({display}) {
            <div className='flex justify-center flex-col'>
              <form onSubmit={handleSubmit}>
                <Box sx={{width: 500,maxWidth: '100%', marginTop:2, paddingLeft:2, paddingRight:2, textAlign:'center'}}>
-                 <div className='font-Roboto tracking-tighter text-sm font-bold'>leave a message !</div>
+                 <div className='font-Roboto tracking-tighter text-sm font-bold'>Leave a message !</div>
                </Box>
                <Box sx={{width: 500,maxWidth: '100%', marginTop:2, paddingLeft:2, paddingRight:2}}>
                  <TextField fullWidth label="Name :"  name='name' value={formData.name} onChange={(e)=>{handleInputChange(e)}} variant='outlined' InputLabelProps={{ style: { fontFamily: '"Helvetica Neue"' }}} InputProps={{ style: { fontFamily:'"Courier New', letterSpacing: -1}}}/>
@@ -72,10 +72,9 @@ function Contact({display}) {
        </>
   )
 }
-
 const ContactDetails = React.memo(()=>{
   return (<Box sx={{width: 500,maxWidth: '100%', marginTop:2, paddingLeft:2, paddingRight:2, textAlign:'center'}}>
-              <div className="text-sm font-Roboto tracking-tighter font-bold">Or email at  codwithlalith@gmail.com</div>
+              <div className="text-sm font-Roboto tracking-tighter font-bold">Or email at prosperprep007@gmail.com</div>
             </Box>)
 });
 export default Contact
