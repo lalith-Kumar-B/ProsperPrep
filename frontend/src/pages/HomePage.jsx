@@ -1,8 +1,8 @@
 import React from 'react'
-
+import AuthWrap from '../components/auth/AuthWrap.jsx'
 function HomePage() {
   return (
-    <div>HomePage</div>
+    <div>homepage</div>
   )
 }
 

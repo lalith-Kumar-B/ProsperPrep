@@ -1,10 +1,12 @@
 import React from 'react'
-import QuizBox from "../components/QuizBox.jsx"
+import AuthWrap from '../components/auth/AuthWrap.jsx'
 function Quiz() {
   return (
+    <AuthWrap>
     <div>
-    < QuizBox />    
+      haldi
     </div>
+   </AuthWrap>
   )
 }
 

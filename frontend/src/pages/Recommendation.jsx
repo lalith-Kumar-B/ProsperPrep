@@ -1,10 +1,12 @@
 import React from 'react'
-
+import AuthWrap from '../components/auth/AuthWrap.jsx'
 function Recommendation() {
   return (
-    <div className="">
-      Recommendation page 
+    <AuthWrap>
+    <div>
+      haldi
     </div>
+   </AuthWrap>
   )
 }
 

@@ -19,7 +19,7 @@
     "@fontsource/roboto": "^5.0.8",
     "@mui/base": "^5.0.0-beta.37",
     "@mui/icons-material": "^5.15.14",
-    "@mui/material": "^5.15.14",
+    "@mui/material": "^5.15.15",
     "@tensorflow-models/posenet": "^2.2.2",
     "await-to-js": "^3.0.0",
     "axios": "^1.6.8",

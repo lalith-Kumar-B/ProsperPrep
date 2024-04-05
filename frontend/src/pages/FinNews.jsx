@@ -1,10 +1,14 @@
 import React from 'react'
-
+import AuthWrap from '../components/auth/AuthWrap.jsx'
 function FinNews() {
   return (
+    <>
+    <AuthWrap>
     <div>
-      finNews
+      haldi
     </div>
+   </AuthWrap>
+   </>
   )
 }
 
