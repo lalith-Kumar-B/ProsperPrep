@@ -15,8 +15,8 @@ function Navbar() {
   }
   //Navigate hook and styles
   const navigate = useNavigate();
-  const font_Classes = "sans-serif text-md font-bold capitalize tracking-tight ";
-  const link_hover_Classes = loc.pathname === '/' ? "hover:bg-zinc-100 text-white hover:text-black" : "hover:bg-zinc-900 hover:text-white";
+  const font_Classes = "sans-serif text-sm font-bold capitalize tracking-tighter ";
+  const link_hover_Classes = "hover:bg-zinc-900 hover:text-white";
 
   //Responsive width
   const [Dstate,setDstate] = useState(window.innerWidth<=750 ? "phone" : "wide");
@@ -78,7 +78,7 @@ function Navbar() {
       </SignedIn>
       {Dstate == "wide" && (
         <div className="links">
-          {["Home", "Meditation", "Yoga", "Sleep" ,"Journal"].map((item, index) =>
+          {["Home", "FinNews", "Quiz", "FinSearch" ,"Recommendation"].map((item, index) =>
             <a key={index} onClick={() => { navigate(`/${item === "Home" ? "" : item}`) }} className={`px-3 py-3 mx-2 rounded-sm cursor-pointer ${font_Classes} ${link_hover_Classes}`}>{item}</a>
           )}
           <SignedOut>
