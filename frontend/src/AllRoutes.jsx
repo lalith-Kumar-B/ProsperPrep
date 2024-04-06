@@ -4,7 +4,6 @@ import ContactFormPhone from './components/forms/ContactFormPhone.jsx'
 import HomePage from './pages/HomePage.jsx'
 import FinSearch from './pages/FinSearch.jsx';
 import Quiz from './pages/Quiz.jsx';
-import FinNews from './pages/FinNews.jsx';
 import Recommendation from './pages/Recommendation.jsx';
 function AllRoutes() {
   return (
@@ -13,7 +12,6 @@ function AllRoutes() {
             <Route path='/' element={<HomePage/>} />
             <Route path='/FinSearch' element={<FinSearch/>}/>
             <Route path='/Quiz' element={<Quiz/>}/>
-            <Route path='/FinNews' element={<FinNews />}/>
             <Route path='/Recommendation' element={<Recommendation/>}/>
             <Route path='/Contact' element={<ContactFormPhone display={"block"}/>} />
         </Routes>

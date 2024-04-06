@@ -1,79 +1,51 @@
 import React, { useState } from 'react';
-import './QuizBox.css'; // Import your CSS file for styling
+import ScoreKeeper from './ScoreKeeper';
+import { useSetRecoilState } from 'recoil';
+import { globalScoreAtom } from '../store/atoms';
 
-const questionsData = [
-  {
-    question: "What is the capital of France?",
-    options: ["option1", "option2", "option3", "option4"],
-    correctAnswer: "Paris"
-  },
-  {
-    question: "Which planet is known as the Red Planet?",
-    options: ["option1", "option2", "option3", "option4"],
-    correctAnswer: "option1"
-  },
-  {
-    question: "Who is the author of 'To Kill a Mockingbird'?",
-    options: ["option1", "option2", "option3", "option4"],
-    correctAnswer: "option2"
-  },
-  {
-    question: "What is the largest mammal in the world?",
-    options: ["option1", "option2", "option3", "option4"],
-    correctAnswer: "option3"
-  },
-  {
-    question: "What is the chemical symbol for water?",
-    options: ["option1", "option2", "option3", "option4"],
-    correctAnswer: "option4"
-  }
-];
+function QuizBox({ question, options, correctAnswer }) {
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [showAnswer, setShowAnswer] = useState(false);
+  const setScore = useSetRecoilState(globalScoreAtom);
 
-const QuizBox = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(0);
-  const [showScore, setShowScore] = useState(false);
-
-  const handleAnswerClick = (selectedOption) => {
-    if (selectedOption === questionsData[currentQuestion].correctAnswer) {
-      setScore(score + 1);
+  const handleOptionSelect = (selectedOptionText) => {
+    if (selectedOptionText === correctAnswer) {
+      setScore((prevScore) => prevScore + 1); 
     }
-
-    const nextQuestion = currentQuestion + 1;
-    if (nextQuestion < questionsData.length) {
-      setCurrentQuestion(nextQuestion);
-    } else {
-      setShowScore(true);
-    }
+    setShowAnswer(true); 
   };
+  
 
   return (
-    
-    <div className="quiz-container">
-      <div className="card">      
-      {showScore ? (
-        <div className="score-section">
-          You scored {score} out of {questionsData.length}
-        </div>
-      ) : (
-        <>
-          <div className="question-section">
-            <div className="question-card">
-              <div className="question-text">{questionsData[currentQuestion].question}</div>
-            </div>
-          </div>
-          <div className="answer-section">
-            {questionsData[currentQuestion].options.map((option, index) => (
-              <button key={index} className="option-button" onClick={() => handleAnswerClick(option)}>
-                {option}
-              </button>
-            ))}
-          </div>
-        </>
-      )}
+    <div className="max-w-sm p-6 border border-gray-200 rounded-lg shadow-lg bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 text-white">
+      <div>
+        <h2 className="text-xl font-semibold mb-4">{question}</h2>
+        <ul>
+        {options.map((option) => (<li
+          key={option}
+    onClick={() => handleOptionSelect(option)}
+    className={`cursor-pointer py-2 rounded-lg shadow-md px-2 text-black ${
+      selectedOption === option ? 'bg-blue-400' : 'bg-blue-200'
+    } hover:bg-blue-300 mb-2`}
+  >
+    {option}
+  </li>
+))}
+
+        </ul>
       </div>
+      {showAnswer && (
+        <div className="mt-4">
+          {selectedOption === correctAnswer ? (
+            <div className="text-lg font-semibold">Correct Answer!</div>
+          ) : (
+            <div className="text-lg font-semibold">Incorrect Answer!</div>
+          )}
+        </div>
+      )}
+      <ScoreKeeper/>
     </div>
   );
-};
+}
 
 export default QuizBox;

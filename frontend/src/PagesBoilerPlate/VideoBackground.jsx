@@ -10,7 +10,7 @@ const VideoBackground = () => {
         loop
         playbackrate={0.3} // Adjust the playback rate as needed
       >
-        <source src="/5155396-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+        <source src="/8820216-uhd_3840_2160_25fps.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>

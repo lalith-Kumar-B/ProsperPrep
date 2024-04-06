@@ -16,12 +16,15 @@ dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 app = FastAPI()
+#update your mongo uri
+client = MongoClient(os.getenv("MONGO_URI"))
 
 origins = [
     "http://localhost:3000",
     "https://localhost:3000",
     'http://localhost:5173',
-    'https://localhost:5173'
+    'https://localhost:5173',
+    'http://localhost:4000',
 ]
 
 app.add_middleware(
@@ -60,13 +63,34 @@ def generate_MCQs(topic:str,difficulty:str,num_questions:int):
     chain_1 = LLMChain(llm=mcq_ai, prompt=prompt)
     response =  chain_1.invoke({"output_format":output_format,"topic":topic,"difficulty":difficulty,"num_questions":num_questions})
 
-    # response["text"] = response["text"].replace("'", "#").replace('"', "'").replace("#", '"')   
+    # response["text"] = response["text"].replace("'", "#").replace('"', "'").replace("#", '"')    
     result = """"""
     for char in response["text"]:
         result += char if char != "'"  else '"' 
 
     result = json.loads(result)
     return result
+
+@app.get("/nbGuide/{userId}")
+def processQuery(userId:str,query:str):
+    try:
+        # db name
+        collection = client["nirvana"]["users"]
+        user =  collection.find_one({"userId": userId})
+        user_details = user["user"]["financial_details"]
+    except Exception as e:
+        user_details=""
+    prompt = PromptTemplate(input_variables=["user_details","query"],template='''
+        You are nbGuide a guide for a user who is looking for a financial guide
+        The user has the following details
+        {user_details}
+        The user has the following query 
+        {query}
+        Try to answer the query in the best possible way
+    ''')
+    chain_1 = LLMChain(llm=mcq_ai, prompt=prompt)
+    response =  chain_1.invoke({"user_details":user_details,"query":query},output_key="ai")
+    return response["ai"]
     
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=4000)

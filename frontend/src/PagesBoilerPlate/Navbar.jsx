@@ -78,7 +78,7 @@ function Navbar() {
       </SignedIn>
       {Dstate == "wide" && (
         <div className="links">
-          {["Home", "FinNews", "Quiz", "FinSearch" ,"Recommendation"].map((item, index) =>
+          {["Home", "Quiz", "FinSearch" ,"Recommendation"].map((item, index) =>
             <a key={index} onClick={() => { navigate(`/${item === "Home" ? "" : item}`) }} className={`px-3 py-3 mx-2 rounded-sm cursor-pointer ${font_Classes} ${link_hover_Classes}`}>{item}</a>
           )}
           <SignedOut>
@@ -95,7 +95,7 @@ function Navbar() {
           <span onClick={resnav} className="absolute -ml-10 z-[999]"> < MenuIcon sx={{ fontSize : 40}} /> </span>
           <div style={{display: listD ? 'block' : 'none' }} className=" absolute bg-gray-900 rounded-md h-80 w-64 -ml-64 mt-10 z-[99] text-center">
             <div className="flex flex-col justify-center items-center">
-             {["Home", "FinNews", "Quiz", "FinSearch","Recommendation"].map((item, index) =>
+             {["Home", "Quiz", "FinSearch","Recommendation"].map((item, index) =>
                <a key={index} onClick={() => { navigate(`/${item === "Home" ? "" : item}`); resnav(); }} className={`px-3 py-3 mb-4 w-40 ${item == "Home" ? "mt-4" : ''} rounded-sm cursor-pointer ${font_Classes} ${link_hover_Classes}`}>{item}</a>
               )}
           </div>

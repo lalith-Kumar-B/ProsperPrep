@@ -1,8 +1,12 @@
 import React from 'react'
-import AuthWrap from '../components/auth/AuthWrap.jsx'
+import VideoBackground from '../PagesBoilerPlate/VideoBackground.jsx'
+import NameAnime from '../PagesBoilerPlate/NameAnime.jsx'
 function HomePage() {
   return (
-    <div>homepage</div>
+    <>
+    <VideoBackground />
+    <NameAnime/>
+    </>
   )
 }
 
